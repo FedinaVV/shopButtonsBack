@@ -1,6 +1,5 @@
 package com.fedina.shop.repositories.jpa;
 
-import com.fedina.shop.entity.ButtonEntity;
 import com.fedina.shop.entity.ConfigureEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

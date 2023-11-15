@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ButtonsJpaRepositoryImpl {
-    ButtonsJpaRepository buttonsJpaRepository;
+public class ButtonsRepositoryImpl {
+    private final ButtonsJpaRepository buttonsJpaRepository;
 
     @Autowired
-    public ButtonsJpaRepositoryImpl(ButtonsJpaRepository buttonsJpaRepository) {
+    public ButtonsRepositoryImpl(ButtonsJpaRepository buttonsJpaRepository) {
         this.buttonsJpaRepository = buttonsJpaRepository;
     }
 
@@ -48,7 +48,7 @@ public class ButtonsJpaRepositoryImpl {
     }
 
     /**
-     * Удв=аляет пуговицу
+     * Удаляет пуговицу
      * @param id - id пуговицы
      */
     public void deleteById(int id) {

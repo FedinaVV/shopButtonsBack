@@ -1,29 +1,27 @@
-package com.fedina.shop.repositories.implementations;
+package com.fedina.shop.services;
 
-import com.fedina.shop.entity.ButtonEntity;
 import com.fedina.shop.entity.ConfigureEntity;
-import com.fedina.shop.repositories.jpa.ConfigureJpaRepository;
+import com.fedina.shop.repositories.implementations.ConfigureRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Repository
-public class ConfigureJpaRepositoryImpl {
+@Service
+public class ConfigureService {
 
-    ConfigureJpaRepository configureJpaRepository;
+    private final ConfigureRepositoryImpl configureRepository;
 
     @Autowired
-    public ConfigureJpaRepositoryImpl(ConfigureJpaRepository configureJpaRepository) {
-        this.configureJpaRepository = configureJpaRepository;
+    public ConfigureService(ConfigureRepositoryImpl configureRepository) {
+        this.configureRepository = configureRepository;
     }
 
     /**
      * Возвращает список подробной информации о пуговицы
      */
     public List<ConfigureEntity> getAllConfigs() {
-        return configureJpaRepository.getAllConfigs();
+        return configureRepository.getAllConfigs();
     }
 
     /**
@@ -31,7 +29,7 @@ public class ConfigureJpaRepositoryImpl {
      * @param id - id подробной информации одной пуговицы
      */
     public ConfigureEntity getConfigById(Integer id) {
-        return configureJpaRepository.getConfigById(id);
+        return configureRepository.getConfigById(id);
     }
 
     /**
@@ -39,7 +37,7 @@ public class ConfigureJpaRepositoryImpl {
      * @param configureEntity - сущность подробной информации
      */
     public void createNewConfigure(ConfigureEntity configureEntity) {
-        configureJpaRepository.save(configureEntity);
+        configureRepository.createNewConfigure(configureEntity);
     }
 
     /**
@@ -47,7 +45,7 @@ public class ConfigureJpaRepositoryImpl {
      * @param configureEntity- сущность подробной информации
      */
     public void updateConfigure(ConfigureEntity configureEntity) {
-       configureJpaRepository.save(configureEntity);
+        configureRepository.updateConfigure(configureEntity);
     }
 
     /**
@@ -55,6 +53,6 @@ public class ConfigureJpaRepositoryImpl {
      * @param id - - id подробной информации одной пуговицы
      */
     public void deleteById(int id) {
-        configureJpaRepository.deleteById(id);
+        configureRepository.deleteById(id);
     }
 }
