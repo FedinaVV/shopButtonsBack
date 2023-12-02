@@ -2,6 +2,8 @@ package com.fedina.shop.entity;
 
 import jakarta.persistence.*;
 
+import java.time.OffsetDateTime;
+
 //@NoArgsConstructor
 //@Data
 //@AllArgsConstructor
@@ -16,6 +18,15 @@ public class ConfigureEntity {
     private String color;
     private Integer height;
     private Integer code;
+
+    @Column(name = "created_at")
+    private OffsetDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private OffsetDateTime updatedAt;
+
+    @Column(name = "deleted_at")
+    private OffsetDateTime deletedAt;
 
     public ConfigureEntity() {
 
