@@ -53,4 +53,9 @@ public class BasketController {
         }
         return buttonWithConfigureList;
     }
+
+    @DeleteMapping
+    public void deleteButtonFromBasket(@RequestParam(name = "id") int id) {
+        basketService.deleteByIdFromBasket(id);
+    }
 }

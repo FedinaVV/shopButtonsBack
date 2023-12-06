@@ -26,4 +26,7 @@ public class BasketRepositoryImpl {
     public List<BasketEntity> getBaskets() {
         return basketJpaRepository.findAll();
     }
+    public void deleteByIdFromBasket(int id) {
+        basketJpaRepository.deleteById(id);
+    }
 }
