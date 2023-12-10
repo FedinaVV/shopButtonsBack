@@ -1,5 +1,6 @@
 package com.fedina.shop.controllers;
 
+import com.fedina.shop.dto.ButtonWithBasket;
 import com.fedina.shop.dto.ButtonWithConfigure;
 import com.fedina.shop.entity.BasketEntity;
 import com.fedina.shop.entity.ButtonEntity;
@@ -34,24 +35,26 @@ public class BasketController {
     }
 
     @GetMapping
-    public List<ButtonWithConfigure> getButtonsFromBasket() {
-        List<ButtonWithConfigure> buttonWithConfigureList = new ArrayList<>();
+    public List<ButtonWithBasket> getButtonsFromBasket() {
+        List<ButtonWithBasket> buttonWithBasketList = new ArrayList<>();
         List<BasketEntity> basketEntityList = basketService.getBaskets();
 
         for (BasketEntity item : basketEntityList) {
             ButtonEntity buttonEntity = buttonsRepository.getButtonById(item.getButtonId());
             ConfigureEntity configureEntity = configureRepository.getConfigById(item.getConfigeId());
+            ButtonWithBasket buttonWithBasket = new ButtonWithBasket();
 
-            ButtonWithConfigure buttonWithConfigure = new ButtonWithConfigure();
-            buttonWithConfigure.setId(buttonEntity.getId());
-            buttonWithConfigure.setTitle(buttonEntity.getTitle());
-            buttonWithConfigure.setPrice(buttonEntity.getPrice());
-            buttonWithConfigure.setImage(buttonEntity.getImage());
-            buttonWithConfigure.setConfigure(configureEntity);
+            buttonWithBasket.setBasketId(item.getId());
+            buttonWithBasket.setId(buttonEntity.getId());
+            buttonWithBasket.setTitle(buttonEntity.getTitle());
+            buttonWithBasket.setPrice(buttonEntity.getPrice());
+            buttonWithBasket.setImage(buttonEntity.getImage());
+            buttonWithBasket.setConfigure(configureEntity);
 
-            buttonWithConfigureList.add(buttonWithConfigure);
+            buttonWithBasketList.add(buttonWithBasket);
         }
-        return buttonWithConfigureList;
+
+        return buttonWithBasketList;
     }
 
     @DeleteMapping
